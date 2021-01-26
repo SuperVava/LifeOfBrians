@@ -41,6 +41,7 @@ public class LaVieDesBrian extends PApplet {
                 information = menu.keyPressed(mouseX, mouseY);
                 treat(information);
             }
+            mousePressed = false;
         }
     }
 
