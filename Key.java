@@ -8,6 +8,7 @@ public class Key {
     int positionX;
     int positionY;
     PFont font;
+    int color = 255;
 
     public Key(PApplet processing, String name, int positionX, int positionY) {
         this.processing = processing;
@@ -22,12 +23,19 @@ public class Key {
         processing.textAlign(PConstants.CENTER);
         processing.rectMode(PConstants.CENTER);
 
-        processing.fill(255);
-        processing.rect(positionX, positionX, (float) ((name.length() * font.getSize()) / 1.7), font.getSize());
+        processing.fill(color);
+        processing.rect(positionX, positionY, (float) ((name.length() * font.getSize()) / 1.7), font.getSize());
         processing.fill(0);
         processing.text(name, positionX, positionY + (float) (font.getSize() / 3));
     }
 
-    // public void is
+       public boolean isActivated(int cursorPositionX, int cursorPositionY){
+        if(cursorPositionX > positionX - (float) ((name.length() * font.getSize()) / 1.7) / 2 && cursorPositionX < positionX + (float) ((name.length() * font.getSize()) / 1.7) / 2 && cursorPositionY > positionY - font.getSize()/2 && cursorPositionY < positionY + font.getSize()/2 ) return true;
+        else return false;
+       }
 
+    public String getName() {
+        color = 100;
+        return name;
+    }
 }

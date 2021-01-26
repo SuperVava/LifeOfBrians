@@ -5,6 +5,7 @@ public class LaVieDesBrian extends PApplet {
     private CarreListe list;
     private int picture = 0;
     private Menu menu;
+    String information;
     private boolean isStarted = false;
 
     public static void main(String[] args) {
@@ -36,6 +37,17 @@ public class LaVieDesBrian extends PApplet {
         }
         else{
             menu.draw();
+            if(mousePressed){
+                information = menu.keyPressed(mouseX, mouseY);
+                treat(information);
+            }
+        }
+    }
+
+    private void treat(String information){
+        if(information == "null");
+        if(information == "Start"){
+            isStarted = true;
         }
     }
 
