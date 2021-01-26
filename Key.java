@@ -14,17 +14,20 @@ public class Key {
         this.name = name;
         this.positionX = positionX;
         this.positionY = positionY;
-
-
     }
 
-    public void draw() {
+    public void draw(PFont font) {
+        this.font = font;
         processing.textFont(font);
-        processing.fill(0, 240, 0);
-        processing.textAlign(PConstants.LEFT);
-        processing.rect(positionX, positionX, name.length()*font.getSize(), font.getSize());
+        processing.textAlign(PConstants.CENTER);
+        processing.rectMode(PConstants.CENTER);
+
+        processing.fill(255);
+        processing.rect(positionX, positionX, (float) ((name.length() * font.getSize()) / 1.7), font.getSize());
+        processing.fill(0);
+        processing.text(name, positionX, positionY + (float) (font.getSize() / 3));
     }
 
-   // public void is
+    // public void is
 
 }
