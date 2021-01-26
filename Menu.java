@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PFont;
 
 import java.util.ArrayList;
@@ -6,11 +7,12 @@ import java.util.ArrayList;
 public class Menu {
     PApplet processing;
     PFont font;
+    int positionX;
     ArrayList<ArrayList<Key>> options;
 
     public Menu(PApplet processing) {
         this.processing = processing;
-        int positionX = processing.displayWidth/2;
+        this.positionX = processing.displayWidth/2;
 
         options = new ArrayList<>(5);
 
@@ -30,6 +32,12 @@ public class Menu {
 
     public void draw(){
         processing.background(255);
+        this.font = processing.createFont("Consolas Bold", 30);
+        processing.textFont(font);
+        processing.textAlign(PConstants.CENTER);
+        processing.fill(0);
+        processing.text("Couleur", positionX, 60 + (float) (font.getSize() / 3));
+
         this.font = processing.createFont("Consolas", 30);
         for(int i = 0; i < options.size(); i++) {
             for(int j = 0; j < options.get(i).size(); j++) {

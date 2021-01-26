@@ -34,10 +34,9 @@ public class LaVieDesBrian extends PApplet {
                 }
             }
             list.draw();
-        }
-        else{
+        } else {
             menu.draw();
-            if(mousePressed){
+            if (mousePressed) {
                 information = menu.keyPressed(mouseX, mouseY);
                 treat(information);
             }
@@ -45,11 +44,13 @@ public class LaVieDesBrian extends PApplet {
         }
     }
 
-    private void treat(String information){
-        if(information == "null");
-        if(information == "Start"){
-            isStarted = true;
+    private void treat(String information) {
+        if (information == "null") ;
+        else if (information == "Start") isStarted = true;
+        else if (information == "Échelle de gris croissante") list.setColorType(1);
+        else if (information == "Échelle de gris aléatoire") list.setColorType(2);
+        else if (information == "Couleurs aléatoires") list.setColorType(3);
+
         }
     }
 
-}

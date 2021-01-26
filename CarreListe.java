@@ -14,6 +14,7 @@ public class CarreListe {
     private int grilleSize;
     int centerX;
     int centerY;
+    int colorType;
 
     float grey = 0;
     int red;
@@ -33,7 +34,6 @@ public class CarreListe {
         this.centerX = (largeurGrille / 2) * carre.size();
         this.centerY = (hauteurGrille / 2) * carre.size();
 
-        randomColor();
         this.positions[0] = new int[]{centerX, centerY};
         numberOfSquares++;
         System.out.println(numberOfSquares);
@@ -113,18 +113,29 @@ public class CarreListe {
         positionY = positions[0][1] + carre.size() * (int) processing.random(-hauteurGrille, hauteurGrille);
         if (!isPositionFree()) {
             isIncrease = false;
-            processing.background(255);
             System.out.println("échec");
         } else {
-            grey += 0.5;
-            randomColor();
+            if (colorType == 1) {
+                grey += 0.5;
+                red = (int) grey;
+                green = (int) grey;
+                blue = (int) grey;
+                color[numberOfSquares] = new int[]{red, green, blue};
+            } else if (colorType == 2) {
+                int randomGrey = (int)processing.random(255);
+                red = randomGrey;
+                green = randomGrey;
+                blue = randomGrey;
+                color[numberOfSquares] = new int[]{red, green, blue};
+            } else if (colorType == 3) randomColor();
+
             this.positions[numberOfSquares] = new int[]{positionX, positionY};
             numberOfSquares++;
             isIncrease = true;
-            numberOfBrians ++;
+            numberOfBrians++;
             System.out.println("New Brian at " + positionX + " ; " + positionY + ",");
             System.out.println("There is " + numberOfBrians + " Brians");
-            if(isStuck()) {
+            if (isStuck()) {
                 draw();
                 newBrian();
             }
@@ -137,4 +148,7 @@ public class CarreListe {
         isIncrease = false;
     }
 
+    public void setColorType(int colorType) {
+        this.colorType = colorType;
+    }
 }
