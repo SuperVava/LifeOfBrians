@@ -43,4 +43,12 @@ public class Key {
     public String getName() {
         return name;
     }
+
+    public boolean isActivated() {
+        return isActivated;
+    }
+
+    public void setActivated(boolean activated) {
+        isActivated = activated;
+    }
 }
